@@ -1,0 +1,29 @@
+<CATALOG>
+ <Station_Information>
+	<StationName>North Springs</StationName>
+	<TotalCars>500</TotalCars>
+	<CarsEntering>250</CarsEntering>
+	<CarsLeaving>250</CarsLeaving>
+ </Station_Information>
+
+ <Station_Information>
+	<StationName>Doraville</StationName>
+	<TotalCars>400</TotalCars>
+	<CarsEntering>200</CarsEntering>
+	<CarsLeaving>200</CarsLeaving>
+ </Station_Information>
+
+ <Station_Information>
+	<StationName>Linux</StationName>
+	<TotalCars>300</TotalCars>
+	<CarsEntering>150</CarsEntering>
+	<CarsLeaving>150</CarsLeaving>
+ </Station_Information>
+
+ <Station_Information>
+	<StationName>NorthAve</StationName>
+	<TotalCars>200</TotalCars>
+	<CarsEntering>100</CarsEntering>
+	<CarsLeaving>100</CarsLeaving>
+ </Station_Information>
+</CATALOG>

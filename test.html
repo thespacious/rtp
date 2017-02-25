@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<script type="text/javascript" src="/js/jquery-3.1.1.min"></script>
+
+
+<head><title> Real Time Parking</title></head>
+
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+
+<body>
+<div class= "after-box"><h1> Total Number of Cars in Parking Lot</h1>
+<p1> 65 </p1></div>
+
+<div class="floating-box"># Cars Entered
+<br><p1> 25 </p1></div>
+<div class="floating-box"># Cars Left
+<br><div class = "data-box"> 40 </p1></div></div>
+<div class="floating-box"># Parking Spaces
+<br><p1> 500 </p1></div>
+<div class="floating-box">Data 4</div>
+	
+
+
+
+<button type = "button" onclick="makeLot('TestName', 500)"> Get Data</button>
+<br><br>
+<table id= "demo"></table>
+
+
+<script>
+function makeLot(name, totalSpaces)
+{
+	var json=
+	{
+  		"name": name,
+  		"totalSpaces": totalSpaces
+  	};
+  var rec = {
+  	type: "POST",
+  	url: "192.168.0.58:8080/api/v1/makeLot",
+  	contentType: "application/json; charset=UTF-8",
+  	data: JSON.stringify(json)
+  };
+$.ajax(rec).done(function(data)
+{
+  console.log(data);
+});
+}
+
+function loadXMLDoc()
+{
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function()
+	{
+		if(this.readyState == 4 && this.status == 200)
+			myFunction(this);
+	}
+	xmlhttp.open("GET", "information.xml", true);
+	xmlhttp.send();
+}
+function myFunction(xml)
+{
+	var i;
+	var xmlDoc = xml.responseXML;
+	var table = "<tr><th>Station Name</th><th>Total Cars</th><th>Cars Entering</th><th>Cars Leaving</th></tr>";
+	var x = xmlDoc.getElementsByTagName("Station_Information");
+	for(i = 0; i < x.length; i++)
+	{
+    	table += "<tr><td>" +
+    	+
+    x[i].getElementsByTagName("StationName")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TotalCars")[0].childNodes[0].nodeValue +
+    "</td></tr>"+
+    x[i].getElementsByTagName("CarsEntering")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("CarsLeaving")[0].childNodes[0].nodeValue +
+    "</td></tr>"
+	}
+	document.geElementbyId("demo").innerHTML = table;
+}
+
+</script>
+</body>
+</html>
+
